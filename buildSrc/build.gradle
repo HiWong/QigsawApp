@@ -1,0 +1,59 @@
+apply plugin: 'java'
+apply plugin: 'groovy'
+//apply plugin: 'kotlin-android'
+apply plugin: 'kotlin'
+
+def kotlin_version='1.2.51'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    compile gradleApi()
+    compile localGroovy()
+
+    compile "com.android.tools.build:gradle:3.2.1"
+    //compileOnly "com.android.tools.build:gradle:3.0.1"
+
+    compile "com.google.code.gson:gson:2.8.0"
+
+    compile 'org.javassist:javassist:3.20.0-GA'
+
+    compile 'org.ow2.asm:asm:5.0.1'
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+
+    //classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+    //implementation 'com.iqiyi.android.qigsaw:core:1.0.0-alpha27'
+
+}
+
+repositories{
+    mavenCentral()
+    google()
+    jcenter()
+
+}
+
+buildscript {
+
+    def kotlin_version2='1.2.51'
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.1'
+
+
+
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version2"
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
