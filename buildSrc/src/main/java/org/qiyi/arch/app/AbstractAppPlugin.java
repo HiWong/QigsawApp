@@ -4,7 +4,7 @@ import android.databinding.tool.DataBindingBuilder;
 
 import com.android.annotations.NonNull;
 import com.android.build.gradle.AndroidConfig;
-import com.android.build.gradle.internal.ApplicationTaskManager;
+//import com.android.build.gradle.internal.ApplicationTaskManager;
 import com.android.build.gradle.internal.SdkHandler;
 import com.android.build.gradle.internal.TaskManager;
 import com.android.build.gradle.internal.api.dsl.extensions.AppExtensionImpl;

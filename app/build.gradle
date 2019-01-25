@@ -1,6 +1,6 @@
-apply plugin: 'com.android.application'
-//apply plugin: org.qiyi.arch.app.QigsawAppPlugin
-apply plugin: 'kotlin-android'
+//apply plugin: 'com.android.application'
+apply plugin: org.qiyi.arch.app.QigsawAppPlugin
+//apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 28
@@ -11,13 +11,30 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
+        multiDexKeepProguard file('multidexkeep.pro')
+
     }
     buildTypes {
+        debug{
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard.cfg'
+        }
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard.cfg'
         }
     }
+
+    packagingOptions{
+        exclude 'META-INF/beans.xml'
+    }
+
+
+    dynamicFeatures = [":AppleModule"]
+
+
 }
 
 dependencies {
@@ -27,4 +44,40 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+
+    implementation 'com.github.lzyzsd:circleprogress:1.1.0@aar'
+
+
+    implementation 'cn.fanrunqi:waveprogress:1.0.1'
+
+    //implementation 'com.facebook.android:audience-network-sdk:4.15.0'
+
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.loopj.android:android-async-http:1.4.9'
+    implementation 'com.alibaba:fastjson:1.2.55'
+
+    implementation 'com.facebook.fresco:webpsupport:1.8.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
+    api 'com.google.guava:guava:27.0.1-android'
+
+    implementation 'com.github.piasy:safelyandroid:1.1.1'
+    implementation 'io.reactivex:rxjava:1.2.1'
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'org.fourthline.cling:cling-core:2.1.1'
+    implementation 'org.fourthline.cling:cling-support:2.1.1'
+
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    implementation 'com.google.dagger:dagger:2.7'
+    implementation 'com.jakewharton:butterknife:8.2.1'
+    implementation 'com.google.code.gson:gson:2.7'
+    implementation 'com.squareup.okhttp:okhttp:2.7.5'
+    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    implementation 'com.squareup.sqlbrite:sqlbrite:0.6.3'
+
+
+
 }
