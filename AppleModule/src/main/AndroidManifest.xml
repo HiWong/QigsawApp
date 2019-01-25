@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dist="http://schemas.android.com/apk/distribution"
+    package="wang.imallen.blog.applemodule">
+
+    <dist:module
+        dist:onDemand="true"
+        dist:title="@string/title_applemodule">
+        <dist:fusing dist:include="true" />
+    </dist:module>
+
+    <application>
+        <activity android:name=".AppleActivity"></activity>
+    </application>
+
+</manifest>

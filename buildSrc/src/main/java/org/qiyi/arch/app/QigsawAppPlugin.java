@@ -1,7 +1,7 @@
 package org.qiyi.arch.app;
 
 import com.android.annotations.NonNull;
-import com.android.build.gradle.AbstractAppPlugin;
+//import com.android.build.gradle.AbstractAppPlugin;
 import com.android.build.gradle.AndroidConfig;
 import com.android.build.gradle.AppExtension;
 import com.android.build.gradle.internal.AppModelBuilder;

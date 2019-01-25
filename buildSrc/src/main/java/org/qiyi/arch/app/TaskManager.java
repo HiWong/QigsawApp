@@ -230,6 +230,18 @@ public abstract class TaskManager extends com.android.build.gradle.internal.Task
         //TODO 只是这样做还不行，关键还是要用自定义的VairantScope替换掉这个VariantScope, 或者hook住它，然后就可以动态改变它的方法。
         //TODO 但是要从源头上修改VariantScope太麻烦了，暂时先hook住,
         //TODO 下一步就是替换掉VariantManger中的variantScopes，这样就差不多了。
+        System.out.println("variant:" + variantScope.toString() + ",dexType is as follows:");
+
+        /*
+        if (dexingType == DexingType.LEGACY_MULTIDEX) {
+            System.out.println("LEGACY_MULTIDEX");
+        } else if (dexingType == DexingType.NATIVE_MULTIDEX) {
+            System.out.println("NATIVE_MULTIDEX");
+        } else if (dexingType == DexingType.MONO_DEX) {
+            System.out.println("MONO_DEX");
+        }
+        */
+        System.out.println(dexingType.toString());
 
         if (dexingType == DexingType.NATIVE_MULTIDEX) {
             dexingType = DexingType.LEGACY_MULTIDEX;
@@ -264,7 +276,7 @@ public abstract class TaskManager extends com.android.build.gradle.internal.Task
             }
         }
 
-        if (variantScope.getNeedsMainDexList() || true) {
+        if (variantScope.getNeedsMainDexList()) {
 
             // ---------
             // create the transform that's going to take the code and the proguard keep list
@@ -288,6 +300,9 @@ public abstract class TaskManager extends com.android.build.gradle.internal.Task
                                 extension.getDexOptions(),
                                 dexingType == DexingType.LEGACY_MULTIDEX);
             }
+            //TODO 打log发现是D8MainDexListTransform
+            System.out.println("multiDexTransfrom class:" + multiDexTransform.getClass().getName());
+
             transformManager
                     .addTransform(taskFactory, variantScope, multiDexTransform)
                     .ifPresent(
